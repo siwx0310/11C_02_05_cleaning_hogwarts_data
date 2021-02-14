@@ -33,14 +33,31 @@ function prepareObjects(jsonData) {
     // TODO: Create new object with cleaned data - and store that in the allAnimals array
     const student = Object.create(Student);
 
-    const studentDataTrim = jsonObject.fullname.trim();
-    let studentData = studentDataTrim.split(" ");
-    console.log(studentData);
+    const studentNameTrim = jsonObject.fullname.trim();
+    let studentNameSplit = studentNameTrim.split(" ");
+    console.log(studentNameSplit);
 
+    // first name
     const studentFirstName =
-      studentData[0].substring(0, 1).toUpperCase() +
-      studentData[0].substring(1).toLowerCase();
+      studentNameSplit[0].substring(0, 1).toUpperCase() +
+      studentNameSplit[0].substring(1).toLowerCase();
     student.name = studentFirstName;
+
+    // middle name
+
+    // last name
+
+    // nick name
+
+    //profile image
+
+    //house
+    const studentHouseTrim = jsonObject.house.trim();
+    const studentHouse =
+      studentHouseTrim.substring(0, 1).toUpperCase() +
+      studentHouseTrim.substring(1).toLowerCase();
+    console.log(studentHouse);
+    student.house = studentHouse;
 
     // TODO: MISSING CODE HERE !!!
     allStudents.push(student);
@@ -65,11 +82,13 @@ function displayStudents(student) {
 
   // set clone data
   clone.querySelector("[data-field=first_name]").textContent = student.name;
-  clone.querySelector("[data-field=middle_name]").textContent = student.desc;
-  clone.querySelector("[data-field=last_name]").textContent = student.type;
-  clone.querySelector("[data-field=nick_name]").textContent = student.age;
-  clone.querySelector("[data-field=profile_image]").textContent = student.age;
-  clone.querySelector("[data-field=House]").textContent = student.age;
+  clone.querySelector("[data-field=middle_name]").textContent =
+    student.middleName;
+  clone.querySelector("[data-field=last_name]").textContent = student.lastName;
+  clone.querySelector("[data-field=nick_name]").textContent = student.nickName;
+  clone.querySelector("[data-field=profile_image]").textContent =
+    student.profileImage;
+  clone.querySelector("[data-field=House]").textContent = student.house;
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
