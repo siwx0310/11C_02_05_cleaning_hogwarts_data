@@ -52,34 +52,29 @@ function prepareObjects(jsonData) {
       // if the student only has a firstname
       // middle name
       newMiddleName = studentNameSplit.push("null", "null");
-
       const createMiddleName = studentNameSplit[1];
       student.middleName = createMiddleName;
-
       //last name
-      const createLastName = studentNameSplit[2];
-      student.lastName = createLastName;
+      newLastName = studentNameSplit[2];
+      student.lastName = newLastName;
     } else if (studentNameSplit >= studentNameSplit[2]) {
       // insert middleName
-      newMiddleName = studentNameSplit[1];
-      student.middleName = newMiddleName;
-
+      const createMiddleName = studentNameSplit[1];
+      student.middleName = createMiddleName;
       // insert lastname
       newLastName = studentNameSplit[2];
       student.lastName = newLastName;
     } else if (studentNameSplit <= studentNameSplit[1]) {
       // if the student is without a middleName
-
       // MiddleName
       newMiddleName = studentNameSplit.splice(1, 0, "null");
       const createMiddleName = studentNameSplit[1];
       student.middleName = createMiddleName;
       // LastName
-      newLastName = studentNameSplit[1];
+      newLastName = studentNameSplit[2];
       student.lastName = newLastName;
     } else if (studentNameSplit >= studentNameSplit[1]) {
       // if the student is without a middleName
-
       // MiddleName
       newMiddleName = studentNameSplit.splice(1, 0, "null");
       const createMiddleName = studentNameSplit[1];
