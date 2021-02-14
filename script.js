@@ -13,6 +13,9 @@ const Student = {
   house: "",
 };
 
+let newMiddleName;
+let newLastName;
+
 function start() {
   console.log("ready");
 
@@ -34,8 +37,9 @@ function prepareObjects(jsonData) {
     const student = Object.create(Student);
 
     const studentNameTrim = jsonObject.fullname.trim();
+
+    // split
     let studentNameSplit = studentNameTrim.split(" ");
-    console.log(studentNameSplit);
 
     // first name
     const studentFirstName =
@@ -43,12 +47,49 @@ function prepareObjects(jsonData) {
       studentNameSplit[0].substring(1).toLowerCase();
     student.name = studentFirstName;
 
-    // middle name
+    // The big MiddleName LastName Puzzle
+    if (studentNameSplit == studentNameSplit[0]) {
+      // if the student only has a firstname
+      // middle name
+      newMiddleName = studentNameSplit.push("null", "null");
 
-    // last name
+      const createMiddleName = studentNameSplit[1];
+      student.middleName = createMiddleName;
 
-    // nick name
+      //last name
+      const createLastName = studentNameSplit[2];
+      student.lastName = createLastName;
+    } else if (studentNameSplit >= studentNameSplit[2]) {
+      // insert middleName
+      newMiddleName = studentNameSplit[1];
+      student.middleName = newMiddleName;
 
+      // insert lastname
+      newLastName = studentNameSplit[2];
+      student.lastName = newLastName;
+    } else if (studentNameSplit <= studentNameSplit[1]) {
+      // if the student is without a middleName
+
+      // MiddleName
+      newMiddleName = studentNameSplit.splice(1, 0, "null");
+      const createMiddleName = studentNameSplit[1];
+      student.middleName = createMiddleName;
+      // LastName
+      newLastName = studentNameSplit[1];
+      student.lastName = newLastName;
+    } else if (studentNameSplit >= studentNameSplit[1]) {
+      // if the student is without a middleName
+
+      // MiddleName
+      newMiddleName = studentNameSplit.splice(1, 0, "null");
+      const createMiddleName = studentNameSplit[1];
+      student.middleName = createMiddleName;
+      // LastName
+      newLastName = studentNameSplit[2];
+      student.lastName = newLastName;
+    }
+
+    console.log(studentNameSplit);
     //profile image
 
     //house
