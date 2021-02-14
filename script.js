@@ -15,6 +15,7 @@ const Student = {
 
 let newMiddleName;
 let newLastName;
+let createMiddleName;
 
 function start() {
   console.log("ready");
@@ -41,48 +42,46 @@ function prepareObjects(jsonData) {
     // split
     let studentNameSplit = studentNameTrim.split(" ");
 
-    // first name
+    // The big MiddleName LastName Puzzle
+    if (studentNameSplit == studentNameSplit[0]) {
+      // if the student only has a firstname
+      newMiddleName = studentNameSplit.push("null", "null");
+      createMiddleName = studentNameSplit[1];
+      newLastName = studentNameSplit[2];
+    } else if (studentNameSplit >= studentNameSplit[2]) {
+      // insert middleName
+      createMiddleName = studentNameSplit[1];
+      newLastName = studentNameSplit[2];
+    } else if (studentNameSplit <= studentNameSplit[1]) {
+      // if the student is without a middleName
+      newMiddleName = studentNameSplit.splice(1, 0, "null");
+      createMiddleName = studentNameSplit[1];
+
+      newLastName = studentNameSplit[2];
+    } else if (studentNameSplit >= studentNameSplit[1]) {
+      // if the student is without a middleName
+      newMiddleName = studentNameSplit.splice(1, 0, "null");
+      createMiddleName = studentNameSplit[1];
+      newLastName = studentNameSplit[2];
+    }
+
+    // FirstName first letter to Upper case
     const studentFirstName =
       studentNameSplit[0].substring(0, 1).toUpperCase() +
       studentNameSplit[0].substring(1).toLowerCase();
     student.name = studentFirstName;
 
-    // The big MiddleName LastName Puzzle
-    if (studentNameSplit == studentNameSplit[0]) {
-      // if the student only has a firstname
-      // middle name
-      newMiddleName = studentNameSplit.push("null", "null");
-      const createMiddleName = studentNameSplit[1];
-      student.middleName = createMiddleName;
-      //last name
-      newLastName = studentNameSplit[2];
-      student.lastName = newLastName;
-    } else if (studentNameSplit >= studentNameSplit[2]) {
-      // insert middleName
-      const createMiddleName = studentNameSplit[1];
-      student.middleName = createMiddleName;
-      // insert lastname
-      newLastName = studentNameSplit[2];
-      student.lastName = newLastName;
-    } else if (studentNameSplit <= studentNameSplit[1]) {
-      // if the student is without a middleName
-      // MiddleName
-      newMiddleName = studentNameSplit.splice(1, 0, "null");
-      const createMiddleName = studentNameSplit[1];
-      student.middleName = createMiddleName;
-      // LastName
-      newLastName = studentNameSplit[2];
-      student.lastName = newLastName;
-    } else if (studentNameSplit >= studentNameSplit[1]) {
-      // if the student is without a middleName
-      // MiddleName
-      newMiddleName = studentNameSplit.splice(1, 0, "null");
-      const createMiddleName = studentNameSplit[1];
-      student.middleName = createMiddleName;
-      // LastName
-      newLastName = studentNameSplit[2];
-      student.lastName = newLastName;
-    }
+    // MiddleName first letter to upper case
+    const studentMiddleName =
+      createMiddleName.substring(0, 1).toUpperCase() +
+      createMiddleName.substring(1).toLowerCase();
+    student.middleName = studentMiddleName;
+
+    // LastName first letter to upper case
+    const studentLastName =
+      newLastName.substring(0, 1).toUpperCase() +
+      newLastName.substring(1).toLowerCase();
+    student.lastName = studentLastName;
 
     console.log(studentNameSplit);
     //profile image
