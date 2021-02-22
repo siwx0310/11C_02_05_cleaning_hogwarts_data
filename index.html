@@ -8,6 +8,31 @@
   </head>
   <body>
     <h1>Cleaning Hogwarts Data</h1>
+    <div>
+      Filter house:
+      <button class="filter" data-action="filter" data-filter="gryffindor">
+        Gryffindor
+      </button>
+      <button class="filter" data-action="filter" data-filter="slytherin">
+        Slytherin
+      </button>
+      <button class="filter" data-action="filter" data-filter="hufflepuff">
+        Hufflepuff
+      </button>
+      <button class="filter" data-action="filter" data-filter="ravenclaw">
+        Ravenclaw
+      </button>
+      <button class="filter" data-action="filter" data-filter="all">All</button>
+    </div>
+    <div>
+      Filter active/expelled student:
+      <button class="filter" data-action="filter" data-filter="active">
+        Active
+      </button>
+      <button class="filter" data-action="filter" data-filter="expelled">
+        Expelled
+      </button>
+    </div>
 
     <table id="list">
       <thead>
@@ -21,7 +46,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- animal template will be copied and inserted here -->
+        <!-- student template will be copied and inserted here -->
       </tbody>
     </table>
 
